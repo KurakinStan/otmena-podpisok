@@ -1,0 +1,205 @@
+/* Цвета — те же, что в расширении «Трекер подписок».
+   Тёмная тема включается сама по настройкам системы. */
+:root {
+  color-scheme: light dark;
+  --paper: #f3f5f4;
+  --sheet: #ffffff;
+  --ink: #1e2b2f;
+  --muted: #5d6d72;
+  --line: #dde3e1;
+  --primary: #1f6f6b;
+  --primary-dark: #17544f;
+  --link: #1f6f6b;
+  --accent-bg: #e6f2f0;
+  --radius: 12px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #151a1b;
+    --sheet: #1f2628;
+    --ink: #e3eae8;
+    --muted: #9badb1;
+    --line: #34403f;
+    --primary: #24807a;
+    --primary-dark: #2c968f;
+    --link: #6cc7bf;
+    --accent-bg: #1b3432;
+  }
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+a { color: var(--link); }
+a:hover { text-decoration-thickness: 2px; }
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+
+/* ---------- Шапка ---------- */
+.top { background: var(--sheet); border-bottom: 1px solid var(--line); }
+.top-in { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 56px; flex-wrap: wrap; }
+.logo { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--ink); text-decoration: none; }
+.top-nav { display: flex; gap: 16px; font-size: 15px; }
+.top-nav a { color: var(--muted); text-decoration: none; }
+.top-nav a:hover { color: var(--ink); }
+
+main { padding-top: 24px; padding-bottom: 40px; }
+
+h1 { font-size: 32px; line-height: 1.2; margin: 8px 0 8px; }
+h2 { font-size: 22px; line-height: 1.3; margin: 32px 0 12px; }
+
+.meta, .crumbs { color: var(--muted); font-size: 14px; margin: 0; }
+.crumbs a { color: var(--muted); }
+
+/* ---------- Главная ---------- */
+.hero { padding: 16px 0 8px; }
+.hero h1 { font-size: 38px; }
+.hero-sub { color: var(--muted); font-size: 18px; margin: 0 0 20px; }
+.search input {
+  width: 100%;
+  font: inherit;
+  font-size: 18px;
+  padding: 14px 16px;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--sheet);
+  color: var(--ink);
+}
+.search input:focus { outline: none; border-color: var(--primary); }
+.nothing { margin-top: 12px; }
+
+.cat h2 { font-size: 18px; color: var(--muted); font-weight: 600; margin: 28px 0 10px; }
+.svc-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; }
+.svc-list a {
+  display: block;
+  padding: 12px 14px;
+  background: var(--sheet);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+}
+.svc-list a:hover { border-color: var(--primary); color: var(--primary); }
+
+.article-teaser { margin-top: 36px; padding: 20px; background: var(--sheet); border: 1px solid var(--line); border-radius: var(--radius); }
+.article-teaser h2 { margin-top: 0; }
+.article-teaser p { margin-bottom: 0; }
+
+/* ---------- Страница сервиса ---------- */
+.answer {
+  margin: 20px 0;
+  padding: 18px 20px;
+  background: var(--accent-bg);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius);
+}
+.answer p { margin: 0 0 14px; }
+.answer-label { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; color: var(--primary); margin-bottom: 4px !important; }
+
+.btn {
+  display: inline-block;
+  padding: 11px 18px;
+  background: var(--primary);
+  color: #fff;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+.btn-ghost { background: transparent; color: var(--link); }
+.btn-ghost:hover { background: var(--accent-bg); }
+
+.toc { background: var(--sheet); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 20px; }
+.toc p { margin: 0 0 6px; font-weight: 600; }
+.toc ul { margin: 0; padding-left: 20px; }
+
+.method, .notes, .faq, .related { margin-top: 8px; }
+
+.steps { counter-reset: step; list-style: none; padding: 0; margin: 0; }
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 12px 14px 12px 52px;
+  margin-bottom: 8px;
+  background: var(--sheet);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 14px;
+  top: 12px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: center;
+}
+
+.notes ul, .related ul, .method ul { padding-left: 22px; }
+.notes li, .method ul li { margin-bottom: 6px; }
+
+.faq details { background: var(--sheet); border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 8px; }
+.faq summary { cursor: pointer; padding: 12px 16px; font-weight: 600; }
+.faq details p { margin: 0; padding: 0 16px 14px; }
+
+.source { color: var(--muted); font-size: 14px; margin-top: 24px; }
+
+/* ---------- Блок про расширение ---------- */
+.cta {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin: 36px 0 8px;
+  padding: 20px;
+  background: var(--sheet);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+}
+.cta img { flex: none; }
+.cta-title { font-weight: 700; font-size: 19px; margin: 0 0 6px; }
+.cta-text p { margin: 0 0 10px; }
+.cta-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.cta-mobile { display: none; color: var(--muted); }
+
+/* На телефонах и планшетах (палец вместо мыши) расширение не поставить —
+   говорим об этом честно и предлагаем отправить ссылку себе */
+@media (hover: none) and (pointer: coarse) {
+  .cta-mobile { display: block; }
+}
+
+.foot { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; padding: 20px 0 32px; }
+.foot p { margin: 0 0 8px; }
+.foot a { color: var(--muted); }
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  h1, .hero h1 { font-size: 27px; }
+  h2 { font-size: 20px; }
+  .top-nav { gap: 12px; font-size: 14px; }
+  .cta { flex-direction: column; }
+  .cta img { width: 44px; height: 44px; }
+  .svc-list { grid-template-columns: 1fr 1fr; }
+  .steps li { padding-left: 48px; }
+}
